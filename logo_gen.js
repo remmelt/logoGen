@@ -179,25 +179,4 @@ var LogoGen = function (sizeish) {
 
 };
 
-var lg = new LogoGen(160);
 
-$(document).ready(function () {
-    lg.drawGrid();
-    lg.redrawColors();
-
-    $("#go").click(function () {
-        lg.redrawColors();
-    });
-
-    $("#download").click(function () {
-        var source = '<?xml version="1.0" standalone="no"?>\r\n' + new XMLSerializer().serializeToString($("#canvas")[0]),
-            a = document.createElement('a');
-
-        a.href = 'data:image/svg+xml;utf8,' + encodeURIComponent(source);
-        a.download = 'logo.svg';
-        a.target = '_blank';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-    });
-});
